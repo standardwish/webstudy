@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑몰 웹사이트</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        .return {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            width: 120px;
+            height: 40px;
+        }
+
+        #goods {
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+        }
+        .item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .item h3 {
+            text-align: center;
+        }
+
+        .item p {
+            text-align: center;
+        }
+
+        .item img {
+            width: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <button class="return"><a href="/solution">돌아가기</a></button>
+    <h1 style="text-align: center;">쇼핑몰 웹사이트</h1>
+    <section>
+        <div id="goods">
+            <div class="item">
+                <h3>바나나</h3>
+                <img src="https://i.imgur.com/GOzcY3d.png" />
+                <p>8000원</p>
+                <button onclick="appendProduct('바나나', 8000)">장바구니에 추가</button>
+            </div>
+            <div class="item">
+                <h3>수박</h3>
+                <img src="https://imgur.com/hIGHf0D.png" />
+                <p>12000원</p>
+                <button onclick="appendProduct('수박', 12000)">장바구니에 추가</button>
+            </div>
+            <div class="item">
+                <h3>사과</h3>
+                <img src="https://imgur.com/tNCL555.png" />
+                <p>10000원</p>
+                <button onclick="appendProduct('사과', 10000)">장바구니에 추가</button>
+            </div>
+            <div class="item">
+                <h3>파인애플</h3>
+                <img src="https://imgur.com/9SzZ4pF.png" />
+                <p>20000원</p>
+                <button onclick="appendProduct('파인애플', 20000)">장바구니에 추가</button>
+            </div>          
+        </div>
+    </section>
+    <section class="basket">
+        <h1>장바구니 목록</h1>
+        <div class="coloum"></div>
+        <div class="price">총 가격 : 0원</div>
+    </section>
+
+    <script>
+        let total_price = 0;
+        function appendProduct(fruit, price) {
+            total_price += price;
+            const temp = document.createElement("div");
+            temp.innerHTML = `<div>
+                <li>${fruit}</li>
+                </div>`;
+            document.querySelector(".coloum").append(temp);
+            document.querySelector(".price").textContent = `총 가격 : ${total_price}원`;    
+        }
+    </script>
+</body>
+</html>
